@@ -23,7 +23,6 @@ call vundle#end()
 """"""""""""""""""""""""""""""""""""""""
 :syntax on
 
-:colorscheme delek
 :let mapleader = ","
 
 "Open and edit vimrc, then source it at the end of the hacks
@@ -37,16 +36,20 @@ call vundle#end()
 "Do not select line numbers with the mouse
 :set mouse=a
 
-"Tabs
+"Tabs and linereaks
 :set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-:set list listchars=tab:>-,trail:-,extends:>,eol:¬"
+:set list listchars=tab:>-,trail:-,extends:>,precedes:<,eol:¬
+:set smartindent
+:set showbreak=>\
+:set breakindent
+:set linebreak
 
 "Move swapfiles to a temp folder
 :set dir =/tmp
 
-
 "Surround selected word with double quotes
-:nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+:nnoremap <leader>" viW<esc>a"<esc>hbi"<esc>lel
+:nnoremap <leader>' viW<esc>a'<esc>hbi'<esc>lel
 
 "Beggining of line with H
 :nnoremap H ^
@@ -60,9 +63,7 @@ call vundle#end()
 ":inoremap <buffer> [ []<esc>i
 
 :set nocompatible ruler laststatus=2 showcmd showmode number
-
 :set relativenumber
-:set incsearch hlsearch
 
 "Abbreviations for common typos
 :iabbrev adn and
@@ -70,31 +71,17 @@ call vundle#end()
 :iabbrev teh the
 
 "Scroll offset
-":set scrolloff=20
-
-"FileType Events
-:autocmd FileType python :nnoremap <buffer> <localleader>c I#<esc>
-:autocmd FileType python :nnoremap <buffer> <localleader>C ^x
-:autocmd FileType python :set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-
-:autocmd FileType *.txt :set ts = 4 sts=4 sw=4 nolist
-:autocmd FileType *.tex :set ts = 2 sts=2 sw=2
-
-:autocmd FileType *.lua :set ts=4 sts=4 sw=4 et
+:set scrolloff=10
 
 ":inoremap <buffer> ,b \begin{}<esc>i
 ":inoremap <buffer> ,e \end{}<esc>i
 ":inoremap <C-j> <esc>o
 ":inoremap <C-k> <esc>O
 
-:autocmd FileType latex :nnoremap <buffer> <localleader>c I#<esc>
-:autocmd FileType python :nnoremap <buffer> <localleader>C ^x
-
 " :autocmd BufReadPost * :echom ">^.^< Hello Supervisor"
 
 " VimLatex settings
 :set grepprg=grep\ -nH\$*
-:let g:tex_flavor='latex'
 
 " map NERDTree command to F2
 :map <F2> :NERDTreeToggle<CR>
@@ -107,3 +94,21 @@ call vundle#end()
 
 :let g:airline_powerline_fonts = 1
 :let g:airline_theme='murmur'
+
+" Search configurations ----------------------------------------------
+:set hlsearch
+:set incsearch
+:nnoremap n nzz
+:nnoremap N nzz
+:nnoremap <silent> <esc><esc> :noh<cr>:match<cr>
+:autocmd ColorScheme * :highlight Search ctermfg=black ctermbg=yellow cterm=NONE
+:autocmd ColorScheme * :highlight Match ctermfg=black ctermbg=yellow cterm=NONE
+
+" Colorschemes  ------------------------------------------------------
+
+:autocmd ColorScheme * :highlight GitGutterAdd ctermbg=NONE ctermfg=green cterm=bold
+:autocmd ColorScheme * :highlight GitGutterChange ctermbg=NONE ctermfg=yellow cterm=bold
+:autocmd ColorScheme * :highlight GitGutterDelete ctermbg=NONE ctermfg=red cterm=bold
+:autocmd ColorScheme * :highlight GitGutterChangeDelete ctermbg=NONE ctermfg=red cterm=bold
+:autocmd ColorScheme * :highlight SpellBad ctermfg=black ctermbg=green cterm=NONE
+:colorscheme delek
