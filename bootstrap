@@ -1,0 +1,17 @@
+#!/bin/env bash
+
+#Install git submodules (for Vundle)
+echo "Installing Vundle"
+git submodule init
+git submodule update
+
+#Link the vimrc to home
+echo "Linking vimrc to home"
+if [ -e "$HOME/.vimrc" ]; then
+    echo "ERROR: ~/.vimrc already exists!"
+else
+    ln -s "$(pwd)/vimrc" "$HOME/.vimrc"
+    echo "Linking ~/.vimrc"
+fi
+
+echo "All done!"
