@@ -19,6 +19,7 @@ Plugin 'itchyny/calendar.vim'
 Plugin 'gerw/vim-latex-suite'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/vim-easymotion'
+Plugin 'terryma/vim-expand-region'
 
 call vundle#end()
 :filetype plugin indent on
@@ -71,6 +72,11 @@ call vundle#end()
 :iabbrev adn and
 :iabbrev hte the
 :iabbrev teh the
+:iabbrev tihs this
+
+"Region Expansion
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 "Scroll offset
 :set scrolloff=10
