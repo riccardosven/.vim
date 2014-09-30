@@ -96,5 +96,6 @@ vmap <C-v> <Plug>(expand_region_shrink)
 :autocmd ColorScheme * :highlight GitGutterChangeDelete ctermbg=NONE ctermfg=red cterm=bold
 :autocmd ColorScheme * :highlight SpellBad ctermfg=black ctermbg=green cterm=NONE
 ":colorscheme delek
-:colorscheme koehler
+":colorscheme koehler
+:colorscheme pablo
 "}}}
