@@ -1,9 +1,5 @@
-"Be iMproved!
-set nocompatible
-
-""""""""""""""""""""""""""""""""""""""""
-"Start Vundle config
-""""""""""""""""""""""""""""""""""""""""
+" vim:fdm=marker
+"Vundle {{{
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -23,87 +19,68 @@ Plugin 'terryma/vim-expand-region'
 
 call vundle#end()
 :filetype plugin indent on
-""""""""""""""""""""""""""""""""""""""""
+"}}}
+" Editor{{{
 :syntax on
-
 :let mapleader = ","
-
-"Open and edit vimrc, then source it at the end of the hacks
+:set scrolloff=10
+:set dir =/tmp "Move swapfiles to a temp folder
+:set mouse=a "Do not select line numbers with the mouse
+:set cryptmethod=blowfish
+:setlocal iskeyword+=:,-
+:set nocompatible ruler laststatus=2 showcmd showmode number
+:set relativenumber
+"}}}
+" Vimrc{{{
 :nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 :nnoremap <leader>sv :source $MYVIMRC<cr>
-
+"}}}
+"Keyboard Shortcuts{{{
 "Make tags and labeled tags
 :inoremap <leader>nt <++>
 :inoremap <leader>nT <++><esc>hi
-
-"Do not select line numbers with the mouse
-:set mouse=a
-
-"Tabs and linereaks
+"Surround selected word with double quotes
+:nnoremap <leader>" viW<esc>a"<esc>hbi"<esc>lel
+:nnoremap <leader>' viW<esc>a'<esc>hbi'<esc>lel
+"Beggining of line with H
+:nnoremap H ^
+:nnoremap L $
+"}}}
+"Tabs and linebreaks{{{
 :set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 :set list listchars=tab:>-,trail:-,extends:>,precedes:<,eol:¬
 :set smartindent
 :set showbreak=>\
 :set breakindent
 :set linebreak
-
-"Move swapfiles to a temp folder
-:set dir =/tmp
-
-"Surround selected word with double quotes
-:nnoremap <leader>" viW<esc>a"<esc>hbi"<esc>lel
-:nnoremap <leader>' viW<esc>a'<esc>hbi'<esc>lel
-
-"Beggining of line with H
-:nnoremap H ^
-:nnoremap L $
-
-:setlocal iskeyword+=:,-
-
-":inoremap <buffer> { {}<++><esc>F}i
-":inoremap <buffer> [ []<++><esc>F]i
-":inoremap <buffer> { {}<esc>i
-":inoremap <buffer> [ []<esc>i
-
-:set nocompatible ruler laststatus=2 showcmd showmode number
-:set relativenumber
-
-"Abbreviations for common typos
+"}}}
+"Abbreviations{{{
 :iabbrev adn and
 :iabbrev hte the
 :iabbrev teh the
 :iabbrev tihs this
-
-"Region Expansion
+"}}}
+"Region Expansion{{{
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
-
-"Scroll offset
-:set scrolloff=10
-
-":inoremap <buffer> ,b \begin{}<esc>i
-":inoremap <buffer> ,e \end{}<esc>i
-":inoremap <C-j> <esc>o
-":inoremap <C-k> <esc>O
-
-" :autocmd BufReadPost * :echom ">^.^< Hello Supervisor"
-
-" VimLatex settings
+"}}}
+" VimLatex{{{
 :set grepprg=grep\ -nH\$*
-
-" map NERDTree command to F2
+"}}}
+" NERDTree{{{
 :map <F2> :NERDTreeToggle<CR>
 :imap <F2> <ESC>:NERDTreeToggle<CR>i
 :let g:NERDTreeChDirMode=2
-
-
+"}}}
+" Vim Calendar{{{
 :let g:calendar_google_calendar = 1
 :let g:calendar_google_task = 1
-
+"}}}
+" Vim Airline{{{
 :let g:airline_powerline_fonts = 1
 :let g:airline_theme='murmur'
-
-" Search configurations ----------------------------------------------
+"}}}
+" Search{{{
 :set hlsearch
 :set incsearch
 :nnoremap n nzz
@@ -111,12 +88,13 @@ vmap <C-v> <Plug>(expand_region_shrink)
 :nnoremap <silent> <esc><esc> :noh<cr>:match<cr>
 :autocmd ColorScheme * :highlight Search ctermfg=black ctermbg=yellow cterm=NONE
 :autocmd ColorScheme * :highlight Match ctermfg=black ctermbg=yellow cterm=NONE
-
-" Colorschemes  ------------------------------------------------------
-
+"}}}
+" Colorschemes{{{
 :autocmd ColorScheme * :highlight GitGutterAdd ctermbg=NONE ctermfg=green cterm=bold
 :autocmd ColorScheme * :highlight GitGutterChange ctermbg=NONE ctermfg=yellow cterm=bold
 :autocmd ColorScheme * :highlight GitGutterDelete ctermbg=NONE ctermfg=red cterm=bold
 :autocmd ColorScheme * :highlight GitGutterChangeDelete ctermbg=NONE ctermfg=red cterm=bold
 :autocmd ColorScheme * :highlight SpellBad ctermfg=black ctermbg=green cterm=NONE
-:colorscheme delek
+":colorscheme delek
+:colorscheme koehler
+"}}}
