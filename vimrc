@@ -16,6 +16,7 @@ Plugin 'gerw/vim-latex-suite'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'terryma/vim-expand-region'
+"Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 :filetype plugin indent on
