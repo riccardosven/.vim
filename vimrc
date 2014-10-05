@@ -17,6 +17,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'terryma/vim-expand-region'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'jlanzarotta/bufexplorer'
 "Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
@@ -68,7 +69,6 @@ vmap <C-v> <Plug>(expand_region_shrink)
 "}}}
 "Vim-Tmux Navigator{{{
 let g:tmux_navigator_no_mappings = 1
-:hel
 nnoremap <silent> <down> :TmuxNavigateDown<cr>
 nnoremap <silent> <up> :TmuxNavigateUp<cr>
 nnoremap <silent> <right> :TmuxNavigateRight<cr>
