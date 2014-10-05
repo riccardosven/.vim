@@ -17,7 +17,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'terryma/vim-expand-region'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'jlanzarotta/bufexplorer'
+Plugin 'sandeepcr529/Buffet.vim'
+"Plugin 'jlanzarotta/bufexplorer'
 "Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
@@ -73,6 +74,9 @@ nnoremap <silent> <down> :TmuxNavigateDown<cr>
 nnoremap <silent> <up> :TmuxNavigateUp<cr>
 nnoremap <silent> <right> :TmuxNavigateRight<cr>
 nnoremap <silent> <left> :TmuxNavigatePrevious<cr>
+"}}}
+"Buffet {{{
+:nnoremap <silent> ,be :Bufferlist<cr>
 "}}}
 " VimLatex{{{
 :set grepprg=grep\ -nH\$*
