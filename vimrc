@@ -4,7 +4,7 @@ filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle'
 
 "My plugins. Just add a git repository and then use
 " :BundleInstall to install new plugins
