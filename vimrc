@@ -18,6 +18,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'terryma/vim-expand-region'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'sandeepcr529/Buffet.vim'
+Plugin 'junegunn/goyo.vim'
 "Plugin 'jlanzarotta/bufexplorer'
 "Plugin 'Valloric/YouCompleteMe'
 
