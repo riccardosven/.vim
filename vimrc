@@ -45,8 +45,8 @@ call vundle#end()
 :inoremap <leader>nt <++>
 :inoremap <leader>nT <++><esc>hi
 "Surround selected word with double quotes
-:nnoremap <leader>" viW<esc>a"<esc>hbi"<esc>lel
-:nnoremap <leader>' viW<esc>a'<esc>hbi'<esc>lel
+:nnoremap <leader>" e<esc>a"<esc>hbi"<esc>lel
+:nnoremap <leader>' e<esc>a'<esc>hbi'<esc>lel
 "Beggining of line with H
 :nnoremap H ^
 :nnoremap L $
@@ -113,4 +113,18 @@ nnoremap <silent> <left> :TmuxNavigatePrevious<cr>
 ":colorscheme delek
 ":colorscheme koehler
 :colorscheme pablo
+"}}}
+"Filetype Commands{{{
+:augroup matlab_group
+:   autocmd!
+:   autocmd FileType matlab nnoremap <leader>c I% <esc>
+:   autocmd FileType matlab vnoremap <leader>c I% <esc>
+:   autocmd FileType matlab nnoremap <leader>C :silent! s/^% //<cr>:silent! noh<cr>
+:   autocmd FileType matlab vnoremap <leader>C :silent! s/^% //<cr>:noh<cr>
+:augroup END
+:augroup python_group
+:   autocmd!
+:   autocmd FileType python nnoremap <leader>c I# <esc>
+:   autocmd FileType python nnoremap <leader>C :silent! s/^# //<cr> :noh<cr>
+:augroup END
 "}}}
