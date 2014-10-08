@@ -92,7 +92,8 @@ nnoremap <silent> <left> :TmuxNavigatePrevious<cr>
 :let g:NERDTreeChDirMode=2
 "}}}
 "Undotree{{{
-:nnoremap <F3> :UndotreeToggle<cr>
+:map <F3> :UndotreeToggle<CR>
+:imap <F3> <ESC>:UndotreeToggle<CR>i
 "}}}
 " Vim Calendar{{{
 :let g:calendar_google_calendar = 1
@@ -116,21 +117,35 @@ nnoremap <silent> <left> :TmuxNavigatePrevious<cr>
 :autocmd ColorScheme * :highlight GitGutterChange ctermbg=NONE ctermfg=yellow cterm=bold
 :autocmd ColorScheme * :highlight GitGutterDelete ctermbg=NONE ctermfg=red cterm=bold
 :autocmd ColorScheme * :highlight GitGutterChangeDelete ctermbg=NONE ctermfg=red cterm=bold
+:autocmd ColorScheme * :highlight SignColumn ctermbg=NONE
 :autocmd ColorScheme * :highlight SpellBad ctermfg=black ctermbg=green cterm=NONE
 ":colorscheme delek
 ":colorscheme koehler
 :colorscheme pablo
 "}}}
 "Filetype Commands{{{
+:augroup vim_group
+:   autocmd!
+:   autocmd FileType vim nnoremap <leader>c I" <esc>
+:   autocmd FileType vim vnoremap <leader>c I" <esc>
+:   autocmd FileType vim nnoremap <leader>C ^x <esc>
+:augroup END
+:augroup tex_group
+:   autocmd!
+:   autocmd FileType tex nnoremap <leader>c I% <esc>
+:   autocmd FileType tex vnoremap <leader>c I% <esc>
+:   autocmd FileType tex nnoremap <leader>C ^xx
+:augroup END
 :augroup matlab_group
 :   autocmd!
 :   autocmd FileType matlab nnoremap <leader>c I% <esc>
 :   autocmd FileType matlab vnoremap <leader>c I% <esc>
-:   autocmd FileType matlab vnoremap <leader>C :execute "normal! ?^% \r2x"
+:   autocmd FileType matlab nnoremap <leader>C ^xx
 :augroup END
 :augroup python_group
 :   autocmd!
 :   autocmd FileType python nnoremap <leader>c I# <esc>
-:   autocmd FileType python nnoremap <leader>C :silent! s/^# //<cr> :noh<cr>
+:   autocmd FileType python vnoremap <leader>c I# <esc>
+:   autocmd FileType python nnoremap <leader>C ^xx
 :augroup END
 "}}}
