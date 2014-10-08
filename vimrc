@@ -4,7 +4,7 @@ filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'gmarik/Vundle'
+Plugin 'gmarik/Vundle.vim'
 
 "My plugins. Just add a git repository and then use
 " :BundleInstall to install new plugins
@@ -19,6 +19,10 @@ Plugin 'terryma/vim-expand-region'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'sandeepcr529/Buffet.vim'
 Plugin 'junegunn/goyo.vim'
+Plugin 'szw/vim-dict'
+Plugin 'mbbill/undotree'
+Plugin 'kshenoy/vim-signature'
+Plugin 'AndrewRadev/multichange.vim'
 "Plugin 'jlanzarotta/bufexplorer'
 "Plugin 'Valloric/YouCompleteMe'
 
@@ -87,6 +91,9 @@ nnoremap <silent> <left> :TmuxNavigatePrevious<cr>
 :imap <F2> <ESC>:NERDTreeToggle<CR>i
 :let g:NERDTreeChDirMode=2
 "}}}
+"Undotree{{{
+:nnoremap <F3> :UndotreeToggle<cr>
+"}}}
 " Vim Calendar{{{
 :let g:calendar_google_calendar = 1
 :let g:calendar_google_task = 1
@@ -119,8 +126,7 @@ nnoremap <silent> <left> :TmuxNavigatePrevious<cr>
 :   autocmd!
 :   autocmd FileType matlab nnoremap <leader>c I% <esc>
 :   autocmd FileType matlab vnoremap <leader>c I% <esc>
-:   autocmd FileType matlab nnoremap <leader>C :silent! s/^% //<cr>:silent! noh<cr>
-:   autocmd FileType matlab vnoremap <leader>C :silent! s/^% //<cr>:noh<cr>
+:   autocmd FileType matlab vnoremap <leader>C :execute "normal! ?^% \r2x"
 :augroup END
 :augroup python_group
 :   autocmd!
