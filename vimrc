@@ -23,6 +23,7 @@ Plugin 'szw/vim-dict'
 Plugin 'mbbill/undotree'
 Plugin 'kshenoy/vim-signature'
 Plugin 'AndrewRadev/multichange.vim'
+"Plugin 'matze/vim-move'
 "Plugin 'jlanzarotta/bufexplorer'
 "Plugin 'Valloric/YouCompleteMe'
 
