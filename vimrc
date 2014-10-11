@@ -23,6 +23,7 @@ Plugin 'szw/vim-dict'
 Plugin 'mbbill/undotree'
 Plugin 'kshenoy/vim-signature'
 Plugin 'AndrewRadev/multichange.vim'
+Plugin 'mhinz/vim-startify'
 "Plugin 'matze/vim-move'
 "Plugin 'jlanzarotta/bufexplorer'
 "Plugin 'Valloric/YouCompleteMe'
@@ -88,13 +89,13 @@ nnoremap <silent> <left> :TmuxNavigatePrevious<cr>
 :set grepprg=grep\ -nH\$*
 "}}}
 " NERDTree{{{
-:map <F2> :NERDTreeToggle<CR>
-:imap <F2> <ESC>:NERDTreeToggle<CR>i
+:map <silent> <F2> :NERDTreeToggle<CR>
+:imap <silent> <F2> <ESC>:NERDTreeToggle<CR>i
 :let g:NERDTreeChDirMode=2
 "}}}
 "Undotree{{{
-:map <F3> :UndotreeToggle<CR>
-:imap <F3> <ESC>:UndotreeToggle<CR>i
+:map <silent> <F3> :UndotreeToggle<CR>
+:imap <silent> <F3> <ESC>:UndotreeToggle<CR>i
 "}}}
 " Vim Calendar{{{
 :let g:calendar_google_calendar = 1
