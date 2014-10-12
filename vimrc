@@ -24,7 +24,9 @@ Plugin 'mbbill/undotree'
 Plugin 'kshenoy/vim-signature'
 Plugin 'AndrewRadev/multichange.vim'
 Plugin 'mhinz/vim-startify'
-"Plugin 'matze/vim-move'
+Plugin 'wikitopian/hardmode'
+"Plugin 'flazz/vim-colorschemes'
+"Plugin 'biskark/vim-ultimate-colorscheme-utility'
 "Plugin 'jlanzarotta/bufexplorer'
 "Plugin 'Valloric/YouCompleteMe'
 
@@ -41,6 +43,7 @@ call vundle#end()
 :setlocal iskeyword+=:,-
 :set nocompatible ruler laststatus=2 showcmd showmode number
 :set relativenumber
+:set whichwrap=hl
 "}}}
 " Vimrc{{{
 :nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -56,6 +59,14 @@ call vundle#end()
 "Beggining of line with H
 :nnoremap H ^
 :nnoremap L $
+"Scroll with space!
+"Would be awesome... hove to fix <S-Space>
+":nnoremap <space> <C-d>
+":nnoremap <S-PageUp> <C-u>
+"Space opens new line above
+":nnoremap <space> O<esc>j
+"Space toggles fold
+:nnoremap <space> za
 "}}}
 "Tabs and linebreaks{{{
 :set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
@@ -87,6 +98,7 @@ nnoremap <silent> <left> :TmuxNavigatePrevious<cr>
 "}}}
 " VimLatex{{{
 :set grepprg=grep\ -nH\$*
+:let g:tex_flavor='latex'
 "}}}
 " NERDTree{{{
 :map <silent> <F2> :NERDTreeToggle<CR>
@@ -97,6 +109,20 @@ nnoremap <silent> <left> :TmuxNavigatePrevious<cr>
 :map <silent> <F3> :UndotreeToggle<CR>
 :imap <silent> <F3> <ESC>:UndotreeToggle<CR>i
 "}}}
+"Vim Startify{{{
+"let g:startify_custom_header = [
+"              \ '                                 ________  __ __        ',
+"              \ '            __                  /\_____  \/\ \\ \       ',
+"              \ '    __  __ /\_\    ___ ___      \/___//''/''\ \ \\ \    ',
+"              \ '   /\ \/\ \\/\ \ /'' __` __`\        /'' /''  \ \ \\ \_ ',
+"              \ '   \ \ \_/ |\ \ \/\ \/\ \/\ \      /'' /''__  \ \__ ,__\',
+"              \ '    \ \___/  \ \_\ \_\ \_\ \_\    /\_/ /\_\  \/_/\_\_/  ',
+"              \ '     \/__/    \/_/\/_/\/_/\/_/    \//  \/_/     \/_/    ',
+"              \ '',
+"              \ '',
+"              \ ]
+"
+"}}}
 " Vim Calendar{{{
 :let g:calendar_google_calendar = 1
 :let g:calendar_google_task = 1
@@ -104,6 +130,12 @@ nnoremap <silent> <left> :TmuxNavigatePrevious<cr>
 " Vim Airline{{{
 :let g:airline_powerline_fonts = 1
 :let g:airline_theme='murmur'
+"}}}
+"Visual mode moving{{{
+:vnoremap J xjP`[v`]
+:vnoremap K xkP`[v`]
+:vnoremap H xhP`[v`]
+:vnoremap L xlP`[v`]
 "}}}
 " Search{{{
 :set hlsearch
@@ -114,13 +146,19 @@ nnoremap <silent> <left> :TmuxNavigatePrevious<cr>
 :autocmd ColorScheme * :highlight Search ctermfg=black ctermbg=yellow cterm=NONE
 :autocmd ColorScheme * :highlight Match ctermfg=black ctermbg=yellow cterm=NONE
 "}}}
+" make gvim behave like vim{{{
+:set guioptions-=m  "remove menu bar
+:set guioptions-=T  "remove toolbar
+:set guioptions-=r  "remove right-hand scroll bar
+:set guioptions-=L  "remove left-hand scroll bar
+"}}}
 " Colorschemes{{{
 :autocmd ColorScheme * :highlight GitGutterAdd ctermbg=NONE ctermfg=green cterm=bold
 :autocmd ColorScheme * :highlight GitGutterChange ctermbg=NONE ctermfg=yellow cterm=bold
 :autocmd ColorScheme * :highlight GitGutterDelete ctermbg=NONE ctermfg=red cterm=bold
 :autocmd ColorScheme * :highlight GitGutterChangeDelete ctermbg=NONE ctermfg=red cterm=bold
 :autocmd ColorScheme * :highlight SignColumn ctermbg=NONE
-:autocmd ColorScheme * :highlight SpellBad ctermfg=black ctermbg=green cterm=NONE
+autocmd ColorScheme * :highlight SpellBad ctermfg=black ctermbg=green cterm=NONE
 ":colorscheme delek
 ":colorscheme koehler
 :colorscheme pablo
@@ -128,9 +166,9 @@ nnoremap <silent> <left> :TmuxNavigatePrevious<cr>
 "Filetype Commands{{{
 :augroup vim_group
 :   autocmd!
-:   autocmd FileType vim nnoremap <leader>c I" <esc>
-:   autocmd FileType vim vnoremap <leader>c I" <esc>
-:   autocmd FileType vim nnoremap <leader>C ^x <esc>
+:   autocmd FileType vim nnoremap <leader>c I"<esc>
+:   autocmd FileType vim vnoremap <leader>c I"<esc>
+:   autocmd FileType vim nnoremap <leader>C ^x<esc>
 :augroup END
 :augroup tex_group
 :   autocmd!
@@ -150,4 +188,17 @@ nnoremap <silent> <left> :TmuxNavigatePrevious<cr>
 :   autocmd FileType python vnoremap <leader>c I# <esc>
 :   autocmd FileType python nnoremap <leader>C ^xx
 :augroup END
+"}}}
+"Words to avoid{{{
+highlight TechWordsToAvoid ctermbg=red ctermfg=white
+
+function MatchTechWordsToAvoid()
+      match TechWordsToAvoid /\c\<\(obviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however\|so,\|easy\)\>/
+endfunction
+
+autocmd FileType tex call MatchTechWordsToAvoid()
+autocmd BufWinEnter *.tex call MatchTechWordsToAvoid()
+autocmd InsertEnter *.tex call MatchTechWordsToAvoid()
+autocmd InsertLeave *.tex call MatchTechWordsToAvoid()
+autocmd BufWinLeave *.tex call clearmatches()
 "}}}
