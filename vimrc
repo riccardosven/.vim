@@ -25,8 +25,8 @@ Plugin 'kshenoy/vim-signature'
 Plugin 'AndrewRadev/multichange.vim'
 Plugin 'mhinz/vim-startify'
 Plugin 'wikitopian/hardmode'
-"Plugin 'flazz/vim-colorschemes'
-"Plugin 'biskark/vim-ultimate-colorscheme-utility'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'biskark/vim-ultimate-colorscheme-utility'
 "Plugin 'jlanzarotta/bufexplorer'
 "Plugin 'Valloric/YouCompleteMe'
 
@@ -122,6 +122,8 @@ nnoremap <silent> <left> :TmuxNavigatePrevious<cr>
 "              \ '',
 "              \ ]
 "
+let g:startify_custom_header =
+      \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
 "}}}
 " Vim Calendar{{{
 :let g:calendar_google_calendar = 1
