@@ -27,8 +27,8 @@ Plugin 'mhinz/vim-startify'
 "Plugin 'wikitopian/hardmode'
 "Plugin 'neilagabriel/vim-geeknote'
 Plugin 'vimwiki/vimwiki'
-"Plugin 'flazz/vim-colorschemes'
-"Plugin 'biskark/vim-ultimate-colorscheme-utility'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'biskark/vim-ultimate-colorscheme-utility'
 "Plugin 'jlanzarotta/bufexplorer'
 "Plugin 'Valloric/YouCompleteMe'
 
@@ -112,20 +112,17 @@ nnoremap <silent> <left> :TmuxNavigatePrevious<cr>
 :imap <silent> <F3> <ESC>:UndotreeToggle<CR>i
 "}}}
 "Vim Startify{{{
-"let g:startify_custom_header = [
-"              \ '                                 ________  __ __        ',
-"              \ '            __                  /\_____  \/\ \\ \       ',
-"              \ '    __  __ /\_\    ___ ___      \/___//''/''\ \ \\ \    ',
-"              \ '   /\ \/\ \\/\ \ /'' __` __`\        /'' /''  \ \ \\ \_ ',
-"              \ '   \ \ \_/ |\ \ \/\ \/\ \/\ \      /'' /''__  \ \__ ,__\',
-"              \ '    \ \___/  \ \_\ \_\ \_\ \_\    /\_/ /\_\  \/_/\_\_/  ',
-"              \ '     \/__/    \/_/\/_/\/_/\/_/    \//  \/_/     \/_/    ',
-"              \ '',
-"              \ '',
-"              \ ]
-"
 let g:startify_custom_header =
       \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
+let g:startify_skiplist = [
+            \ '\/usr\/share\/vim\/.*$',
+            \ 'bundle/.*/doc',
+            \ '\.aux$',
+            \ '\.log$',
+            \ '\.wiki$',
+            \ 'vimrc$',
+            \ ]
+
 "}}}
 " Vim Calendar{{{
 :let g:calendar_google_calendar = 1
