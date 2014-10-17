@@ -145,7 +145,7 @@ let g:startify_custom_header =
 :set hlsearch
 :set incsearch
 :nnoremap n nzz
-:nnoremap N nzz
+:nnoremap N Nzz
 :nnoremap <silent> <esc><esc> :noh<cr>:match<cr>
 :autocmd ColorScheme * :highlight Search ctermfg=black ctermbg=yellow cterm=NONE
 :autocmd ColorScheme * :highlight Match ctermfg=black ctermbg=yellow cterm=NONE
