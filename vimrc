@@ -24,11 +24,12 @@ Plugin 'mbbill/undotree'
 Plugin 'kshenoy/vim-signature'
 Plugin 'AndrewRadev/multichange.vim'
 Plugin 'mhinz/vim-startify'
+Plugin 'ervandew/screen'
 "Plugin 'wikitopian/hardmode'
 "Plugin 'neilagabriel/vim-geeknote'
 Plugin 'vimwiki/vimwiki'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'biskark/vim-ultimate-colorscheme-utility'
+"Plugin 'biskark/vim-ultimate-colorscheme-utility'
 "Plugin 'jlanzarotta/bufexplorer'
 "Plugin 'Valloric/YouCompleteMe'
 
@@ -45,7 +46,11 @@ call vundle#end()
 :setlocal iskeyword+=:,-
 :set nocompatible ruler laststatus=2 showcmd showmode number
 :set relativenumber
+:set clipboard=unnamed
 :set whichwrap=hl
+:set columns=79
+:set formatoptions+=t
+:set textwidth=80
 "}}}
 " Vimrc{{{
 :nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -119,6 +124,7 @@ let g:startify_skiplist = [
             \ 'bundle/.*/doc',
             \ '\.aux$',
             \ '\.log$',
+            \ '\.bbl$',
             \ '\.wiki$',
             \ 'vimrc$',
             \ ]
@@ -133,10 +139,10 @@ let g:startify_skiplist = [
 :let g:airline_theme='murmur'
 "}}}
 "Visual mode moving{{{
-:vnoremap J xjP`[v`]
-:vnoremap K xkP`[v`]
-:vnoremap H xhP`[v`]
-:vnoremap L xlP`[v`]
+":vnoremap J xjP`[v`]
+":vnoremap K xkP`[v`]
+":vnoremap H xhP`[v`]
+":vnoremap L xlP`[v`]
 "}}}
 " Search{{{
 :set hlsearch
@@ -160,9 +166,7 @@ let g:startify_skiplist = [
 :autocmd ColorScheme * :highlight GitGutterChangeDelete ctermbg=NONE ctermfg=red cterm=bold
 :autocmd ColorScheme * :highlight SignColumn ctermbg=NONE
 autocmd ColorScheme * :highlight SpellBad ctermfg=black ctermbg=green cterm=NONE
-":colorscheme delek
-":colorscheme koehler
-:colorscheme pablo
+:colorscheme railscasts
 "}}}
 "Filetype Commands{{{
 :augroup vim_group
