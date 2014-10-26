@@ -1,5 +1,5 @@
 " vim:fdm=marker
-"Vundle {{{
+" Vundle: {{{
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -25,6 +25,7 @@ Plugin 'kshenoy/vim-signature'
 Plugin 'AndrewRadev/multichange.vim'
 Plugin 'mhinz/vim-startify'
 Plugin 'ervandew/screen'
+Plugin 'haya14busa/incsearch.vim'
 "Plugin 'wikitopian/hardmode'
 "Plugin 'neilagabriel/vim-geeknote'
 Plugin 'vimwiki/vimwiki'
@@ -36,7 +37,7 @@ Plugin 'flazz/vim-colorschemes'
 call vundle#end()
 :filetype plugin indent on
 "}}}
-" Editor{{{
+" Editor: {{{
 :syntax on
 :let mapleader = ","
 :set scrolloff=10
@@ -53,7 +54,7 @@ call vundle#end()
 :set timeoutlen=1000 ttimeoutlen=0 "Remove delays
 :set textwidth=80
 "}}}
-" Vimrc{{{
+" Vimrc: {{{
 :nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 :nnoremap <leader>sv :source $MYVIMRC<cr>
 "}}}
@@ -76,7 +77,7 @@ call vundle#end()
 "Space toggles fold
 :nnoremap <space> za
 "}}}
-"Tabs and linebreaks{{{
+" Tabs and linebreaks {{{
 :set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 :set list listchars=tab:>-,trail:-,extends:>,precedes:<,eol:¬
 :set smartindent
@@ -84,40 +85,40 @@ call vundle#end()
 :set breakindent
 :set linebreak
 "}}}
-"Abbreviations{{{
+" Abbreviations: {{{
 :iabbrev adn and
 :iabbrev hte the
 :iabbrev teh the
 :iabbrev tihs this
 "}}}
-"Region Expansion{{{
+" Region Expansion: {{{
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 "}}}
-"Vim-Tmux Navigator{{{
+" Vim-Tmux Navigator: {{{
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <down> :TmuxNavigateDown<cr>
 nnoremap <silent> <up> :TmuxNavigateUp<cr>
 nnoremap <silent> <right> :TmuxNavigateRight<cr>
 nnoremap <silent> <left> :TmuxNavigatePrevious<cr>
 "}}}
-"Buffet {{{
+" Buffet: {{{
 :nnoremap <silent> ,be :Bufferlist<cr>
 "}}}
-" VimLatex{{{
+" VimLatex: {{{
 :set grepprg=grep\ -nH\$*
 :let g:tex_flavor='latex'
 "}}}
-" NERDTree{{{
+" NERDTree: {{{
 :map <silent> <F2> :NERDTreeToggle<CR>
 :imap <silent> <F2> <ESC>:NERDTreeToggle<CR>i
 :let g:NERDTreeChDirMode=2
 "}}}
-"Undotree{{{
+" Undotree: {{{
 :map <silent> <F3> :UndotreeToggle<CR>
 :imap <silent> <F3> <ESC>:UndotreeToggle<CR>i
 "}}}
-"Vim Startify{{{
+" Vim Startify: {{{
 let g:startify_custom_header =
       \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
 let g:startify_skiplist = [
@@ -131,36 +132,52 @@ let g:startify_skiplist = [
             \ ]
 
 "}}}
-" Vim Calendar{{{
+" Vim Calendar: {{{
 :let g:calendar_google_calendar = 1
 :let g:calendar_google_task = 1
 "}}}
-" Vim Airline{{{
+" Vim Airline: {{{
 :let g:airline_powerline_fonts = 1
 :let g:airline_theme='murmur'
 "}}}
-"Visual mode moving{{{
+" Incsearch: {{{
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+" automatic nohlsearch
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1 
+let g:incsearch#consistent_n_direction = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
+" }}}
+" Visual mode moving: {{{
 ":vnoremap J xjP`[v`]
 ":vnoremap K xkP`[v`]
 ":vnoremap H xhP`[v`]
 ":vnoremap L xlP`[v`]
 "}}}
-" Search{{{
-:set hlsearch
-:set incsearch
-:nnoremap n nzz
-:nnoremap N Nzz
-:nnoremap <silent> <esc><esc> :noh<cr>:match<cr>
-:autocmd ColorScheme * :highlight Search ctermfg=black ctermbg=yellow cterm=NONE
-:autocmd ColorScheme * :highlight Match ctermfg=black ctermbg=yellow cterm=NONE
+" Search: {{{
+":set hlsearch
+":set incsearch
+":nnoremap n nzz
+":nnoremap N Nzz
+":nnoremap <silent> <esc><esc> :noh<cr>:match<cr>
+":autocmd ColorScheme * :highlight Search ctermfg=black ctermbg=yellow cterm=NONE
+":autocmd ColorScheme * :highlight Match ctermfg=black ctermbg=yellow cterm=NONE
 "}}}
-" make gvim behave like vim{{{
+" make gvim behave like vim: {{{
 :set guioptions-=m  "remove menu bar
 :set guioptions-=T  "remove toolbar
 :set guioptions-=r  "remove right-hand scroll bar
 :set guioptions-=L  "remove left-hand scroll bar
 "}}}
-" Colorschemes{{{
+" Colorschemes: {{{
 :autocmd ColorScheme * :highlight GitGutterAdd ctermbg=NONE ctermfg=green cterm=bold
 :autocmd ColorScheme * :highlight GitGutterChange ctermbg=NONE ctermfg=yellow cterm=bold
 :autocmd ColorScheme * :highlight GitGutterDelete ctermbg=NONE ctermfg=red cterm=bold
@@ -169,7 +186,7 @@ let g:startify_skiplist = [
 autocmd ColorScheme * :highlight SpellBad ctermfg=black ctermbg=green cterm=NONE
 :colorscheme railscasts
 "}}}
-"Filetype Commands{{{
+" Filetype Commands: {{{
 :augroup vim_group
 :   autocmd!
 :   autocmd FileType vim nnoremap <leader>c I"<esc>
@@ -195,7 +212,7 @@ autocmd ColorScheme * :highlight SpellBad ctermfg=black ctermbg=green cterm=NONE
 :   autocmd FileType python nnoremap <leader>C ^xx
 :augroup END
 "}}}
-"Words to avoid{{{
+" Words to avoid: {{{
 highlight TechWordsToAvoid ctermbg=red ctermfg=white
 
 function MatchTechWordsToAvoid()
