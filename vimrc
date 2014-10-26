@@ -50,6 +50,7 @@ call vundle#end()
 :set whichwrap=hl
 :set columns=79
 :set formatoptions+=t
+:set timeoutlen=1000 ttimeoutlen=0 "Remove delays
 :set textwidth=80
 "}}}
 " Vimrc{{{
